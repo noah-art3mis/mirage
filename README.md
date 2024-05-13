@@ -1,8 +1,9 @@
-# Pallete
+# Mirage
 
 Helps you pick colors for simulacrum plates.
 
 Part of Semblance, which is part of AUTOMATON, the simulacrum automation package.
+
 
 ## How to
 
