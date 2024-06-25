@@ -4,10 +4,18 @@ Helps you pick colors for simulacrum plates.
 
 Part of Semblance, which is part of AUTOMATON, the simulacrum automation package.
 
+AUTOMATON:
+
+-   [Apothecary](https://github.com/noah-art3mis/apothecary) (text extraction and cleanup)
+-   [Mirage](https://github.com/noah-art3mis/mirage) (palette tool)
+-   [Semblance](https://github.com/noah-art3mis/semblance) (image generation)
 
 ## How to
 
-1.  get a palette. I usually do by uploading a book cover [here](https://color.adobe.com/create/image-gradient) .
+1.  get a palette.
+
+    -   use hex codes
+    -   For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
 
 1.  set configs in `configs.ts`:
 
@@ -32,9 +40,13 @@ Part of Semblance, which is part of AUTOMATON, the simulacrum automation package
 
     ksi
 
+                '#C4B9B3',
                 '#434343',
-                '#e6dad3',
-                '#3d4555',
+                '#657189'
+
+                --c-1: rgb(196, 185, 179);
+                --c-2: linear-gradient(0deg, rgb(67, 67, 67), rgb(67, 67, 67));
+
 
     fg
 
@@ -45,16 +57,13 @@ Part of Semblance, which is part of AUTOMATON, the simulacrum automation package
                 '#37262C',
                 '#836153',
 
-from which i chose:
-
-        color: rgb(55, 38, 44)
-        background-image: linear-gradient(0deg, rgb(242, 208, 167), rgb(155, 149, 191), rgb(155, 149, 191))
-
-        color: rgb(55, 38, 44)
-        background-image: linear-gradient(0deg, rgb(155, 149, 191), rgb(242, 208, 167))
-
-        color: rgb(242, 208, 167);
-        background-image: rgb(115, 76, 72);
+                --c1: rgb(55, 38, 44);
+                --c2: linear-gradient(
+                180deg,
+                rgb(242, 208, 167),
+                rgb(242, 208, 167),
+                rgb(155, 149, 191)
+                );
 
 ## TODO
 
