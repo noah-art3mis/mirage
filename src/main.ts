@@ -14,27 +14,74 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDocument();
     updateResult();
 
-    document
-        .querySelector('form')
-        ?.addEventListener('submit', function (event) {
-            event.preventDefault();
-            updateDocument();
-            updateResult();
-        });
+    document.querySelector('form')?.addEventListener('change', (e) => {
+        e.preventDefault();
+        resetPlates();
+        updateDocument();
+        updateResult();
+    });
 
     document.getElementById('copy-button')?.addEventListener('click', (e) => {
         e.preventDefault();
-
-        const result = document.querySelector('result-content')?.textContent;
-
-        if (result) {
-            copyTextToClipboard(result);
-            displayMessage();
-        } else {
-            alert('No result to copy!');
-        }
+        copyResult();
     });
+
+    // document
+    //     .getElementById('sticky-dash')
+    //     ?.addEventListener('change', function () {
+    //         const dashboard = document.querySelector(
+    //             'dashboard'
+    //         ) as HTMLDivElement;
+    //         const sticky = document.getElementById(
+    //             'sticky-dash'
+    //         ) as HTMLInputElement;
+    //         if (sticky.checked) {
+    //             dashboard.style.position = 'sticky';
+    //         } else {
+    //             dashboard.style.position = 'static';
+    //         }
+    //     });
 });
+
+function copyResult() {
+    const resultElement = document.getElementById('result-text') as HTMLElement;
+
+    if (resultElement) {
+        if (resultElement.textContent) {
+            copyTextToClipboard(resultElement.textContent);
+        }
+        displayMessage();
+    } else {
+        alert('No result to copy!');
+    }
+}
+
+function setInitialValues() {
+    const palette = document.getElementById('palette') as HTMLInputElement;
+    palette.value = PALETTE;
+
+    const gradientSize = document.getElementById(
+        'gradientSize'
+    ) as HTMLInputElement;
+    gradientSize.value = GRADIENT_SIZE;
+
+    const contrastThreshold = document.getElementById(
+        'contrastThreshold'
+    ) as HTMLInputElement;
+    contrastThreshold.value = CONTRAST_THRESHOLD;
+
+    const shufflePlates = document.getElementById(
+        'shufflePlates'
+    ) as HTMLInputElement;
+    shufflePlates.checked = SHUFFLE_PLATES;
+}
+
+function updateResult() {
+    const currentPalettes: string[][] = getCurrentPalettes();
+    const formattedPalettes: string = formatPalettes(currentPalettes);
+    const resultElement = document.getElementById('result-text') as HTMLElement;
+    resultElement.textContent = formattedPalettes;
+}
 
 function updateDocument() {
     const palette: string[] = getPalette();
@@ -46,13 +93,13 @@ function updateDocument() {
     generatePlatesWithColors(colors);
 }
 
-function updateResult() {
-    const currentPalettes: string[][] = getCurrentPalettes();
-    const formattedPalettes: string = formatPalettes(currentPalettes);
-    const resultElement = document.querySelector(
-        'result-content'
-    ) as HTMLElement;
-    resultElement.textContent = formattedPalettes;
+function resetPlates() {
+    var element = document.querySelector('.palette-plate-container');
+    if (element) {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    }
 }
 
 function generatePlatesWithColors(colors: string[][]) {
@@ -61,6 +108,7 @@ function generatePlatesWithColors(colors: string[][]) {
         const plate = generatePlateWithColor(colors[i]);
         plate.addEventListener('click', () => {
             plate.remove();
+            updateResult();
         });
         plates.push(plate);
     }
@@ -89,12 +137,12 @@ function getCurrentPalettes() {
 
 function formatPalettes(palettes: string[][]) {
     let text: string = '';
-    palettes.forEach((palette) => {
-        const text_color: string = palette[0];
-        const bg_color: string = palette[1];
-        const item = `--c-1: ${text_color};\n--c-2: ${bg_color};\n\n`;
+    for (let i = 0; i < palettes.length; i++) {
+        const text_color: string = palettes[i][0];
+        const bg_color: string = palettes[i][1];
+        const item = `/* style 0${i + 1} */\n--c-1: ${text_color};\n--c-2: ${bg_color};\n\n`;
         text += item;
-    });
+    }
     return text;
 }
 
@@ -106,26 +154,6 @@ function displayMessage() {
             message.style.display = 'none';
         }, 1250);
     }
-}
-
-function setInitialValues() {
-    const palette = document.getElementById('palette') as HTMLInputElement;
-    palette.value = PALETTE;
-
-    const gradientSize = document.getElementById(
-        'gradientSize'
-    ) as HTMLInputElement;
-    gradientSize.value = GRADIENT_SIZE;
-
-    const contrastThreshold = document.getElementById(
-        'contrastThreshold'
-    ) as HTMLInputElement;
-    contrastThreshold.value = CONTRAST_THRESHOLD;
-
-    const shufflePlates = document.getElementById(
-        'shufflePlates'
-    ) as HTMLInputElement;
-    shufflePlates.checked = SHUFFLE_PLATES;
 }
 
 function getPalette() {

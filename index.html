@@ -12,16 +12,24 @@
             href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
             rel="stylesheet"
         />
-        <title>Semblance - AUTOMATON</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sono&display=swap"
+            rel="stylesheet"
+        />
+        <title>Mirage - AUTOMATON</title>
     </head>
 
     <body>
         <div class="header">
-            <h1>Semblance</h1>
+            <h1>Mirage</h1>
             <div class="subheading">
                 <p>an <span class="smallcaps">AUTOMATON</span> tool</p>
+                <a href="https://github.com/noah-art3mis/mirage"
+                    >source & README</a
+                >
                 <br />
-                <p>palette mode</p>
             </div>
         </div>
 
@@ -29,13 +37,13 @@
             <div class="palette-param">
                 <div>
                     <label for="palette"
-                        >PALETTE (HEX values, one per line):</label
+                        >Palette (HEX values, one per line)</label
                     >
                     <textarea
                         id="palette"
                         name="palette"
-                        rows="6"
-                        cols="6"
+                        rows="4"
+                        cols="7"
                         resize="false"
                         placeholder="#C4B9B3  #434343  #657189"
                         pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})(\n ?#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))*$"
@@ -45,43 +53,43 @@
             </div>
             <div class="other-params">
                 <div class="inline-item-form">
-                    <label for="gradientSize">GRADIENT_SIZE (1 ~ 4):</label>
+                    <label for="gradientSize">Gradient Size (1 ~ 4)</label>
                     <input
-                        type="text"
+                        type="range"
                         id="gradientSize"
-                        maxlength="1"
-                        size="1"
+                        min="1"
+                        max="4"
+                        step="1"
                     />
                 </div>
                 <div class="inline-item-form">
                     <label for="contrastThreshold"
-                        >CONTRAST_THRESHOLD (2.0 ~ 8.0):</label
+                        >Contrast Threshold (0.0 ~ 5.0)</label
                     >
                     <input
-                        type="text"
+                        type="range"
                         id="contrastThreshold"
-                        maxlength="3"
-                        size="1"
+                        min="0.0"
+                        max="5.0"
+                        step="0.5"
                     />
                 </div>
                 <div class="inline-item-form">
-                    <label for="shufflePlates">SHUFFLE_PLATES:</label>
+                    <label for="shufflePlates">Shuffle</label>
                     <input type="checkbox" id="shufflePlates" />
                 </div>
-                <div class="buttons">
-                    <button type="button">Submit</button>
-                    <p>Click on a plate to remove it</p>
-                </div>
+                <!-- <div class="inline-item-form">
+                    <label for="sticky-dash">Sticky</label>
+                    <input type="checkbox" id="sticky-dash" />
+                </div> -->
             </div>
-            <div class="result">
-                <p class="result-content">Results here</p>
-                <button id="copy-button">Copy</button>
+            <div class="result-container">
+                <div id="result-text"></div>
+                <button id="copy-button" type="button">Copy</button>
                 <p id="result-message">
                     Remaining palettes copied to clipboard!
                 </p>
             </div>
-
-            <script></script>
         </form>
 
         <div class="palette-plate-container"></div>

@@ -2,7 +2,7 @@ import { Book } from './types.ts';
 
 export const fakeBook: Book = {
     id: 'test',
-    author: 'David Bloor',
+    author: 'Lorem Ipsum',
     title: 'Lorem ipsum dolor sit amet consectetur',
     pages: [
         {

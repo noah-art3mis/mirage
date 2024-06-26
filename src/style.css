@@ -2,9 +2,10 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
     --color-a: rgba(255, 255, 255, 0.87);
-    --color-b: #242424;
-    --color-c: #7d7d7e;
+    --color-b: #181818;
+    --color-c: #272727;
     --color-z: #0056b3;
+    --color-y: #945600;
 
     color-scheme: light dark;
     color: var(--color-a);
@@ -45,6 +46,9 @@ textarea {
     resize: none;
     margin: 1rem;
     padding: 1rem;
+    overflow: hidden;
+    white-space: pre;
+
 }
 
 textarea:invalid {
@@ -61,6 +65,13 @@ input[type='text'] {
     padding: 0.45rem;
 }
 
+.other-params {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
 .inline-item-form {
     display: flex;
     align-items: center;
@@ -68,18 +79,30 @@ input[type='text'] {
     gap: 1rem;
 }
 
-.result {
+.result-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
     padding: 1rem;
     border-radius: 8px;
-    background-color: var(--color-b);
 }
 
 .result > p {
     color: var(--color-a);
+}
+
+#result-text {
+    background-color: var(--color-b);
+    padding: 1rem;
+    font-family: 'Sono', 'Courier New', Courier, monospace;
+    text-align: left;
+    white-space: pre;
+    font-size: 0.75rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-width: 30ch;
+    max-height: 10ch;
 }
 
 .buttons {
@@ -190,12 +213,12 @@ button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: #0056b3;
     cursor: pointer;
     transition: border-color 0.25s;
 }
 button:hover {
-    border-color: #646cff;
+    background-color: #5b62e7;
 }
 button:focus,
 button:focus-visible {

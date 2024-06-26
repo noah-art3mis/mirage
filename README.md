@@ -2,7 +2,7 @@
 
 Helps you pick colors for simulacrum plates.
 
-Part of Semblance, which is part of AUTOMATON, the simulacrum automation package.
+Part of AUTOMATON, the simulacrum automation package.
 
 AUTOMATON:
 
@@ -12,63 +12,40 @@ AUTOMATON:
 
 ## How to
 
-1.  get a palette.
+1.  Configure parameters:
 
-    -   use hex codes
-    -   For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
+    -   `Palette`: your palette. For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
+    -   `Gradient Size`: 1 for single color background, 2 for two color gradient, etc
+    -   `Contrast Threshold`: plates with low contrast are skipped
+        -   for higher gradient sizes, a lower threshold is recommended
+    -   `Shuffle`: shuffle order of plates
 
-1.  set configs in `configs.ts`:
+1.  Click the plates you don't want and they will be removed from the list.
 
-    -   PALETTE: your palette
-    -   GRADIENT_SIZE: 1 for single color background, 2 for two colors, etc
-    -   CONTRAST_THRESHOLD: plates with lower contrast are skipped (2 ~ 8 recommended)
-        -   for higher gradient sizes (e.g. 3, 4), a lower threshold is recommended
-    -   CSS_FORMAT: if true, generates results in css format
-    -   SHUFFLE_PLATES: if true, shuffle plates
+    -   Plates are re-generated every time you change the parameters.
+    -   ⚠️ If you have selected plates you like, you will lose them if you make changes to the parameters.
 
-1.  open the client: `npm run dev -- --open`.
+1.  Click `Copy`. Paste the CSS into your [Semblance](https://github.com/noah-art3mis/semblance) stylesheet.
 
-    -   every permutation is generated. low contrast ones are skipped according to `CONTRAST_THRESHOLD`.
-    -   every time you reload the page, sentences are randomly assigned. if `SHUFFLE` is on, plates are shuffled.
+## Examples
 
-1.  click the plates you don't want. they will be removed from the page.
+### KSI Palette
 
-1.  click `Get palette`
-    -   results will be in the console. format depends on `CSS_FORMAT`
+    '#C4B9B3', '#434343', '#657189'
 
-## palettes
+    --c-1: rgb(196, 185, 179);
+    --c-2: linear-gradient(0deg, rgb(67, 67, 67), rgb(67, 67, 67));
 
-    ksi
+### FG Palette
 
-                '#C4B9B3',
-                '#434343',
-                '#657189'
+    '#CDC0BA', '#734C48', '#F2D0A7', '#9B95BF', '#37262C', '#836153'
 
-                --c-1: rgb(196, 185, 179);
-                --c-2: linear-gradient(0deg, rgb(67, 67, 67), rgb(67, 67, 67));
-
-
-    fg
-
-                '#CDC0BA',
-                '#734C48',
-                '#F2D0A7',
-                '#9B95BF',
-                '#37262C',
-                '#836153',
-
-                --c1: rgb(55, 38, 44);
-                --c2: linear-gradient(
-                180deg,
-                rgb(242, 208, 167),
-                rgb(242, 208, 167),
-                rgb(155, 149, 191)
-                );
+    --c1: rgb(55, 38, 44);
+    --c2: linear-gradient(180deg, rgb(242, 208, 167), rgb(242, 208, 167), rgb(155, 149, 191));
 
 ## TODO
 
--   move configs to ui
--   select ones you want instead
+-   select liked instead of removing disliked
 -   convert output to hex
 -   when only 2 colors results say 'background-image' but should be background-color
 -   deploy
