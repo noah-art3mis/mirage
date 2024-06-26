@@ -14,11 +14,11 @@ AUTOMATON:
 
 1.  Configure parameters:
 
-    -   `Palette`: your palette. For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
-    -   `Gradient Size`: 1 for single color background, 2 for two color gradient, etc
-    -   `Contrast Threshold`: plates with low contrast are skipped
+    -   `Palette` : your palette. For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
+    -   `Gradient Size` : 1 for single color background, 2 for two color gradient, etc
+    -   `Contrast Threshold` : plates with low contrast are skipped
         -   for higher gradient sizes, a lower threshold is recommended
-    -   `Shuffle`: shuffle order of plates
+    -   `Shuffle` : shuffle order of plates
 
 1.  Click the plates you don't want and they will be removed from the list.
 
