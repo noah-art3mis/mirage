@@ -2,6 +2,8 @@
 
 Helps you pick colors for simulacrum plates.
 
+Access at https://mirage-five.vercel.app/
+
 Part of AUTOMATON, the simulacrum automation package.
 
 AUTOMATON:
@@ -48,4 +50,3 @@ AUTOMATON:
 -   select liked instead of removing disliked
 -   convert output to hex
 -   when only 2 colors results say 'background-image' but should be background-color
--   deploy
