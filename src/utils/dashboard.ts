@@ -7,10 +7,11 @@ export function updateDocument() {
     const gradientSize: number = getGradientSize();
     const contrast: number = getContrastThreshold();
     const colorFormat: string = getColorFormat();
+    const rotation: number = getGradientRotation();
 
     let colors = getPermutations(palette, gradientSize + 1);
     colors = filterColors(colors, contrast);
-    generatePlates(colors, colorFormat);
+    generatePlates(colors, rotation, colorFormat);
 }
 
 export function isShufflePlates() {
@@ -52,9 +53,51 @@ function getContrastThreshold() {
     return asnumber;
 }
 
-function getColorFormat() {
+export function getColorFormat() {
     const colorFormat = document.getElementById(
         'colorFormat'
     ) as HTMLInputElement;
     return colorFormat.value;
+}
+
+export function getGradientRotation() {
+    const gradientRotation = document.getElementById(
+        'gradientRotation'
+    ) as HTMLInputElement;
+    const asnumber = parseInt(gradientRotation.value);
+    return asnumber;
+}
+
+export function randomizeParameters() {
+    const gradientSize = document.getElementById(
+        'gradientSize'
+    ) as HTMLInputElement;
+    const randomSize = Math.floor(Math.random() * 2) + 2;
+    gradientSize.value = randomSize.toString();
+
+    const contrastThreshold = document.getElementById(
+        'contrastThreshold'
+    ) as HTMLInputElement;
+    const randomContrast = Math.random() * 4 + 1;
+    contrastThreshold.value = randomContrast.toString();
+
+    const colorFormat = document.getElementById(
+        'colorFormat'
+    ) as HTMLInputElement;
+    const randomColorFormat = Math.floor(Math.random() * 3);
+    if (randomColorFormat === 0) {
+        colorFormat.value = '';
+    } else if (randomColorFormat === 1) {
+        colorFormat.value = 'in lch';
+    } else if (randomColorFormat === 2) {
+        colorFormat.value = 'in hsl shorter hue';
+    } else if (randomColorFormat === 3) {
+        colorFormat.value = 'in hsl longer hue';
+    }
+
+    const rotation = document.getElementById(
+        'gradientRotation'
+    ) as HTMLInputElement;
+    const randomRotation = Math.floor(Math.random() * 360);
+    rotation.value = randomRotation.toString();
 }

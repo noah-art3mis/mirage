@@ -64,7 +64,10 @@ input[type='text'] {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    justify-content: flex-start;
+}
+
+.btn-default {
+    align-self: end;
 }
 
 .inline-item-form {
@@ -101,7 +104,8 @@ input[type='text'] {
 }
 
 .buttons {
-    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* plates */

@@ -1,4 +1,5 @@
 import { rgbToHex, gradientToHex } from './colors';
+import { getColorFormat, getGradientRotation } from './dashboard';
 
 export function copyResult() {
     const resultElement = document.getElementById('result-text') as HTMLElement;
@@ -67,7 +68,11 @@ function formatPalettes(palettes: string[][]) {
         TEXT:
         \t${textColorHex}
         BACKGROUND:
-        \t${bgColorHex}\n\n`;
+        \t${bgColorHex}
+        ROTATION:
+        \t${getGradientRotation()}
+        COLOR SPACE:
+        \t${getColorFormat()}\n\n`;
         text += item;
     }
     return text;
