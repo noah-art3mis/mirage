@@ -12,10 +12,10 @@ export function resetPlates() {
     }
 }
 
-export function generatePlates(colors: string[][]) {
+export function generatePlates(colors: string[][], colorFormat: string) {
     const plates = [];
     for (let i = 0; i < colors.length; i++) {
-        const plate = generatePlate(colors[i]);
+        const plate = generatePlate(colors[i], colorFormat);
         plate.addEventListener('click', () => {
             plate.remove();
             updateResult();
@@ -30,7 +30,7 @@ export function generatePlates(colors: string[][]) {
     });
 }
 
-function generatePlate(colors: string[]): HTMLDivElement {
+function generatePlate(colors: string[], colorFormat: string): HTMLDivElement {
     //get random content
     const pageIndex = Math.floor(Math.random() * fakeBook.pages.length);
     const sentenceIndex = Math.floor(
@@ -48,7 +48,7 @@ function generatePlate(colors: string[]): HTMLDivElement {
         plate.style.backgroundColor = colors[1];
     } else {
         const otherColors = colors.slice(1);
-        const gradient = `linear-gradient(0deg, ${otherColors.join(', ')})`;
+        const gradient = `linear-gradient(0deg ${colorFormat}, ${otherColors.join(', ')})`;
         plate.style.backgroundImage = gradient;
     }
     return plate;

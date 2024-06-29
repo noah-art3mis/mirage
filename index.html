@@ -56,6 +56,19 @@
             </div>
             <div class="other-params">
                 <div class="inline-item-form">
+                    <label for="colorFormat">Interpolation color space:</label>
+                    <select id="colorFormat" name="colorFormat">
+                        <option value="">RGB</option>
+                        <option value="in lch">LCH</option>
+                        <option value="in hsl shorter hue">
+                            HSL (shorter hue)
+                        </option>
+                        <option value="in hsl longer hue">
+                            HSL (longer hue)
+                        </option>
+                    </select>
+                </div>
+                <div class="inline-item-form">
                     <label for="gradientSize">Gradient Size (1 ~ 4)</label>
                     <input
                         type="range"
@@ -81,10 +94,7 @@
                     <label for="shufflePlates">Shuffle</label>
                     <input type="checkbox" id="shufflePlates" />
                 </div>
-                <!-- <div class="inline-item-form">
-                    <label for="sticky-dash">Sticky</label>
-                    <input type="checkbox" id="sticky-dash" />
-                </div> -->
+                
             </div>
             <div class="result-container">
                 <div id="result-text"></div>

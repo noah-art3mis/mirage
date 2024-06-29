@@ -47,7 +47,6 @@ AUTOMATON:
 
 ## TODO
 
--   fix output to fit facsimile
 -   feat: select with none/noise/grain/dither to reduce gradient banding
 
     -   https://stackoverflow.com/a/46002546
@@ -61,9 +60,11 @@ AUTOMATON:
         background-position: center, center;
         }
 
--   feat: color modes (in lch)
+-   feat: color modes
+-   feat: gradient rotation
+-   feat: random button
+-   feat: other kinds of gradients
 -   feat: select liked instead of removing disliked
--   fix: convert output to hex
 -   when only 2 colors results say 'background-image' but should be background-color
 -   chore: change branch name https://stackoverflow.com/questions/71951105/how-to-change-current-branch-in-git-from-master-to-main
 -   fix: palette placeholder doesnt break lines properly

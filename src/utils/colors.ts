@@ -45,8 +45,8 @@ export function rgbToHex(rgb: string): string {
 }
 
 export function gradientToHex(gradient: string): string {
-    const rgbs = gradient.match(/rgb\((\d+), (\d+), (\d+)\)/g);
     let hexes = [];
+    const rgbs = gradient.match(/rgb\((\d+), (\d+), (\d+)\)/g);
 
     if (!rgbs) {
         throw new Error('Invalid gradient format: ' + gradient);
@@ -56,5 +56,6 @@ export function gradientToHex(gradient: string): string {
         const hex = rgbToHex(rgb);
         hexes.push(hex);
     }
+
     return hexes.join(',');
 }

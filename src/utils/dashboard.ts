@@ -6,10 +6,18 @@ export function updateDocument() {
     const palette: string[] = getPalette();
     const gradientSize: number = getGradientSize();
     const contrast: number = getContrastThreshold();
+    const colorFormat: string = getColorFormat();
 
     let colors = getPermutations(palette, gradientSize + 1);
     colors = filterColors(colors, contrast);
-    generatePlates(colors);
+    generatePlates(colors, colorFormat);
+}
+
+export function isShufflePlates() {
+    const shufflePlates = document.getElementById(
+        'shufflePlates'
+    ) as HTMLInputElement;
+    return shufflePlates.checked;
 }
 
 function getPalette() {
@@ -44,10 +52,9 @@ function getContrastThreshold() {
     return asnumber;
 }
 
-export function isShufflePlates() {
-    const shufflePlates = document.getElementById(
-        'shufflePlates'
+function getColorFormat() {
+    const colorFormat = document.getElementById(
+        'colorFormat'
     ) as HTMLInputElement;
-    return shufflePlates.checked;
+    return colorFormat.value;
 }
-
