@@ -47,6 +47,23 @@ AUTOMATON:
 
 ## TODO
 
--   select liked instead of removing disliked
--   convert output to hex
+-   fix output to fit facsimile
+-   feat: select with none/noise/grain/dither to reduce gradient banding
+
+    -   https://stackoverflow.com/a/46002546
+    -   https://codepen.io/DavidJAldred/pen/pVbQBJ
+    -   https://stackoverflow.com/questions/4011113/can-you-add-noise-to-a-css-gradient
+    -   or
+        body {
+        background-image: url('path-to-your-noise-texture.png'), linear-gradient(to right, #ff7e5f, #feb47b);
+        background-repeat: repeat, no-repeat;
+        background-size: cover, cover;
+        background-position: center, center;
+        }
+
+-   feat: color modes (in lch)
+-   feat: select liked instead of removing disliked
+-   fix: convert output to hex
 -   when only 2 colors results say 'background-image' but should be background-color
+-   chore: change branch name https://stackoverflow.com/questions/71951105/how-to-change-current-branch-in-git-from-master-to-main
+-   fix: palette placeholder doesnt break lines properly

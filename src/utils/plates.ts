@@ -1,6 +1,36 @@
 import { fakeBook } from './mocks.ts';
+import { updateResult } from './result.ts';
+import { shuffle } from './utils.ts';
+import { isShufflePlates } from './dashboard.ts';
 
-export function generatePlateWithColor(colors: string[]): HTMLDivElement {
+export function resetPlates() {
+    var element = document.querySelector('.palette-plate-container');
+    if (element) {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    }
+}
+
+export function generatePlates(colors: string[][]) {
+    const plates = [];
+    for (let i = 0; i < colors.length; i++) {
+        const plate = generatePlate(colors[i]);
+        plate.addEventListener('click', () => {
+            plate.remove();
+            updateResult();
+        });
+        plates.push(plate);
+    }
+    if (isShufflePlates()) {
+        shuffle(plates);
+    }
+    plates.forEach((plate) => {
+        document.querySelector('.palette-plate-container')?.appendChild(plate);
+    });
+}
+
+function generatePlate(colors: string[]): HTMLDivElement {
     //get random content
     const pageIndex = Math.floor(Math.random() * fakeBook.pages.length);
     const sentenceIndex = Math.floor(

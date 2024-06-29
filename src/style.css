@@ -12,11 +12,6 @@
     color: var(--color-a);
     background-color: var(--color-b);
 
-    --plate-background-gradient: linear-gradient(
-        0deg,
-        var(--color-d),
-        var(--color-d)
-    );
     --plate-background-color: red;
     --plate-text-color: blue;
     --scale: 1.5;
@@ -127,7 +122,6 @@ input[type='text'] {
     line-height: 1.4;
     font-family: 'Cardo', serif;
 
-    background-image: var(--plate-background-gradient);
     background: var(--plate-background-color);
     color: var(--plate-text-color);
 

@@ -1,32 +1,15 @@
-import { isLowContrast, isLowContrastGradient } from './contrast.ts';
+import { isLowContrast } from './contrast.ts';
 
-export function filterColorsGradient(
+export function filterColors(
     colors: string[][],
     threshold: number
 ): string[][] {
     return colors.filter((colorArray) => {
         const mainColor = colorArray[0];
         const otherColors = colorArray.slice(1); // Get all elements except the first
-        return !isLowContrastGradient(mainColor, otherColors, threshold);
+        return !isLowContrast(mainColor, otherColors, threshold);
     });
 }
-
-export function filterColors(
-    colors: string[][],
-    threshold: number
-): string[][] {
-    return colors.filter((pair) => !isLowContrast(pair[0], pair[1], threshold));
-}
-
-// function getColorPairs(palette: string[]): string[][] {
-//     const colorPairs = [];
-//     for (let i = 0; i < palette.length; i++) {
-//         for (let j = 0; j < palette.length; j++) {
-//             colorPairs.push([palette[i], palette[j]]);
-//         }
-//     }
-//     return colorPairs;
-// }
 
 export function getPermutations(
     palette: string[],
