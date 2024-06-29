@@ -1,3 +1,5 @@
+import { rgbToHex, gradientToHex } from './colors';
+
 export function copyResult() {
     const resultElement = document.getElementById('result-text') as HTMLElement;
 
@@ -15,7 +17,6 @@ function copyTextToClipboard(text: string) {
     navigator.clipboard
         .writeText(text)
         .then(() => {
-            console.log('Palettes copied to clipboard!');
             console.log(text);
         })
         .catch((err) => {
@@ -58,9 +59,15 @@ function getCurrentPalettes() {
 function formatPalettes(palettes: string[][]) {
     let text: string = '';
     for (let i = 0; i < palettes.length; i++) {
-        const text_color: string = palettes[i][0];
-        const bg_color: string = palettes[i][1];
-        const item = `/* style 0${i + 1} */\n--c-1: ${text_color};\n--c-2: ${bg_color};\n\n`;
+        const textColorRgb = palettes[i][0];
+        const textColorHex = rgbToHex(textColorRgb);
+        const bgColorRgb = palettes[i][1];
+        const bgColorHex = gradientToHex(bgColorRgb);
+        const item = `/* 0${i + 1} */
+        TEXT:
+        \t${textColorHex}
+        BACKGROUND:
+        \t${bgColorHex}\n\n`;
         text += item;
     }
     return text;

@@ -1,3 +1,5 @@
+import { hexToRgb } from './colors.ts';
+
 export function isLowContrast(
     hex1: string,
     hex2: string[],
@@ -13,19 +15,7 @@ export function isLowContrast(
     return false;
 }
 
-function hexToRgb(hex: string): number[] {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
-    if (!result) {
-        throw new Error('Invalid hex color');
-    }
-
-    return [
-        parseInt(result[1], 16),
-        parseInt(result[2], 16),
-        parseInt(result[3], 16),
-    ];
-}
 
 function contrast(rgb1: number[], rgb2: number[]): number {
     // @ts-ignore

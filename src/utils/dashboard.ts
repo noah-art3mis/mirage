@@ -1,5 +1,6 @@
 import { generatePlates } from './plates.ts';
-import { getPermutations, filterColors } from './colors';
+import { filterColors } from './colors';
+import { getPermutations } from './utils.ts';
 
 export function updateDocument() {
     const palette: string[] = getPalette();
@@ -16,6 +17,14 @@ function getPalette() {
     const parsedPalette = palette.value
         .split('\n')
         .map((color) => color.trim());
+
+    // Check if all colors are valid
+    for (let i = 0; i < parsedPalette.length; i++) {
+        if (!/^#[0-9A-Fa-f]{6}$/.test(parsedPalette[i])) {
+            alert('Invalid color: ' + parsedPalette[i]);
+        }
+    }
+
     return parsedPalette;
 }
 
@@ -41,3 +50,4 @@ export function isShufflePlates() {
     ) as HTMLInputElement;
     return shufflePlates.checked;
 }
+
