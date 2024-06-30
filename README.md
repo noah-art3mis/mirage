@@ -52,13 +52,8 @@ AUTOMATON:
     -   https://stackoverflow.com/a/46002546
     -   https://codepen.io/DavidJAldred/pen/pVbQBJ
     -   https://stackoverflow.com/questions/4011113/can-you-add-noise-to-a-css-gradient
-    -   or
-        body {
-        background-image: url('path-to-your-noise-texture.png'), linear-gradient(to right, #ff7e5f, #feb47b);
-        background-repeat: repeat, no-repeat;
-        background-size: cover, cover;
-        background-position: center, center;
-        }
+    -   background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+        url("../../media/examples/lizard.png");
 
 -   feat: other kinds of gradients
 -   feat: select liked instead of removing disliked

@@ -52,12 +52,21 @@ function generatePlate(
 
     //set colors
     plate.style.color = colors[0];
+
     if (colors.length === 2) {
         plate.style.backgroundColor = colors[1];
     } else {
         const otherColors = colors.slice(1);
-        const gradient = `linear-gradient(${rotation}deg ${colorFormat}, ${otherColors.join(', ')})`;
-        plate.style.backgroundImage = gradient;
+        const transparent: string[] = [];
+        otherColors.forEach((color) => {
+            color = color + 'F0'; // 25% opacity
+            transparent.push(color);
+        });
+
+        const gradient = `linear-gradient(${rotation}deg ${colorFormat}, ${transparent.join(', ')})`;
+
+        const texture = `url('static/n2.png')`;
+        plate.style.backgroundImage = `${gradient}, ${texture}`;
     }
     return plate;
 }
