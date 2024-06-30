@@ -24,13 +24,13 @@ export function hexToRgb(hex: string): number[] {
         parseInt(result[3], 16),
     ];
 }
-
-export function rgbToHex(rgb: string): string {
-    const result = rgb.match(/\d+/g);
-    if (result && result.length === 3) {
+export function rgbaToHex(rgba: string): string {
+    const result = rgba.match(/\d+/g);
+    if (result && (result.length === 3 || result.length === 4)) {
         const r = parseInt(result[0]);
         const g = parseInt(result[1]);
         const b = parseInt(result[2]);
+        const a = result.length === 4 ? parseFloat(result[3]) : 1;
 
         // Function to convert a number to a 2-digit hex string
         const toHex = (value: number): string => {
@@ -38,22 +38,28 @@ export function rgbToHex(rgb: string): string {
             return hex.length === 1 ? '0' + hex : hex;
         };
 
-        return '#' + toHex(r) + toHex(g) + toHex(b);
+        // Convert alpha value to a 2-digit hex string
+        const toHexAlpha = (value: number): string => {
+            const alpha = Math.round(value * 255);
+            return toHex(alpha);
+        };
+
+        return '#' + toHex(r) + toHex(g) + toHex(b) + toHexAlpha(a);
     } else {
-        throw new Error('Invalid RGB format: ' + rgb);
+        throw new Error('Invalid RGBA format: ' + rgba);
     }
 }
 
 export function gradientToHex(gradient: string): string {
     let hexes = [];
-    const rgbs = gradient.match(/rgb\((\d+), (\d+), (\d+)\)/g);
+    const rgbs = gradient.match(/rgba\((\d+), (\d+), (\d+), (\d+\.\d+)\)/g);
 
     if (!rgbs) {
         throw new Error('Invalid gradient format: ' + gradient);
     }
 
     for (const rgb of rgbs) {
-        const hex = rgbToHex(rgb);
+        const hex = rgbaToHex(rgb);
         hexes.push(hex);
     }
 

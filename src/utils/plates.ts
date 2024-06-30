@@ -12,14 +12,12 @@ export function resetPlates() {
     }
 }
 
-export function generatePlates(
-    colors: string[][],
-    rotation: number,
-    colorFormat: string
-) {
+export function generatePlates(plateConfig) {
+    const colors = plateConfig.colors;
+
     const plates = [];
     for (let i = 0; i < colors.length; i++) {
-        const plate = generatePlate(colors[i], rotation, colorFormat);
+        const plate = generatePlate(plateConfig);
         plate.addEventListener('click', () => {
             plate.remove();
             updateResult();
@@ -34,12 +32,10 @@ export function generatePlates(
     });
 }
 
-function generatePlate(
-    colors: string[],
-    rotation: number,
-    colorFormat: string
-): HTMLDivElement {
-    //get random content
+function generatePlate(config): HTMLDivElement {
+    const colors = config.colors;
+
+    //get content from mock randomly
     const pageIndex = Math.floor(Math.random() * fakeBook.pages.length);
     const sentenceIndex = Math.floor(
         Math.random() * fakeBook.pages[0].content.length
@@ -59,13 +55,13 @@ function generatePlate(
         const otherColors = colors.slice(1);
         const transparent: string[] = [];
         otherColors.forEach((color) => {
-            color = color + 'F0'; // 25% opacity
+            color = color + config.noiseAmountHex;
             transparent.push(color);
         });
 
-        const gradient = `linear-gradient(${rotation}deg ${colorFormat}, ${transparent.join(', ')})`;
+        const gradient = `linear-gradient(${config.rotation}deg ${config.colorFormat}, ${transparent.join(', ')})`;
 
-        const texture = `url('static/n2.png')`;
+        const texture = `url('static/${config.noiseTexture}.png')`;
         plate.style.backgroundImage = `${gradient}, ${texture}`;
     }
     return plate;

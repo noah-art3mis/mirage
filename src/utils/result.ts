@@ -1,4 +1,4 @@
-import { rgbToHex, gradientToHex } from './colors';
+import { rgbaToHex, gradientToHex } from './colors';
 import { getColorFormat, getGradientRotation } from './dashboard';
 
 export function copyResult() {
@@ -61,7 +61,7 @@ function formatPalettes(palettes: string[][]) {
     let text: string = '';
     for (let i = 0; i < palettes.length; i++) {
         const textColorRgb = palettes[i][0];
-        const textColorHex = rgbToHex(textColorRgb);
+        const textColorHex = rgbaToHex(textColorRgb);
         const bgColorRgb = palettes[i][1];
         const bgColorHex = gradientToHex(bgColorRgb);
         const item = `/* 0${i + 1} */

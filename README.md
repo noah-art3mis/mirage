@@ -47,19 +47,20 @@ AUTOMATON:
 
 ## TODO
 
--   feat: select with none/noise/grain/dither to reduce gradient banding
-
-    -   https://stackoverflow.com/a/46002546
-    -   https://codepen.io/DavidJAldred/pen/pVbQBJ
-    -   https://stackoverflow.com/questions/4011113/can-you-add-noise-to-a-css-gradient
-    -   background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
-        url("../../media/examples/lizard.png");
-
--   feat: other kinds of gradients
 -   feat: select liked instead of removing disliked
+    -   feat: discard button
+-   feat: noise textures
 -   when only 2 colors results say 'background-image' but should be background-color
 -   chore: change branch name https://stackoverflow.com/questions/71951105/how-to-change-current-branch-in-git-from-master-to-main
 -   fix: palette placeholder doesnt break lines properly
 -   fix: messing with parameters makes plates disappear (rare)
 -   fix: need to press default twice for reset
 -   fix: the format back
+
+-   feat: other kinds of gradients
+-   feat: add none/noise/grain/dither/blur
+
+    -   blur /_ overflow: hidden; filter: blur(8px); _/ https://stackoverflow.com/a/46002546
+    -   base 64 dither https://codepen.io/DavidJAldred/pen/pVbQBJ
+    -   base 64 https://stackoverflow.com/questions/4011113/can-you-add-noise-to-a-css-gradient
+    -   gradient noise http://jollo.org/LNT/public/css-noise.html

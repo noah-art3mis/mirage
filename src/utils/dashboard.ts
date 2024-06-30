@@ -8,10 +8,24 @@ export function updateDocument() {
     const contrast: number = getContrastThreshold();
     const colorFormat: string = getColorFormat();
     const rotation: number = getGradientRotation();
+    const noiseTexture: string = getNoiseTexture();
+    const noiseAmountHex: string = getNoiseAmountHex();
 
+    
     let colors = getPermutations(palette, gradientSize + 1);
     colors = filterColors(colors, contrast);
-    generatePlates(colors, rotation, colorFormat);
+
+    const plateConfig = {
+        colors: colors,
+        gradientSize: gradientSize,
+        contrast: contrast,
+        colorFormat: colorFormat,
+        rotation: rotation,
+        noiseTexture: noiseTexture,
+        noiseAmountHex: noiseAmountHex,
+    };
+    
+    generatePlates(plateConfig);
 }
 
 export function isShufflePlates() {
@@ -100,4 +114,19 @@ export function randomizeParameters() {
     ) as HTMLInputElement;
     const randomRotation = Math.floor(Math.random() * 360);
     rotation.value = randomRotation.toString();
+}
+
+function getNoiseTexture() {
+    const noiseTexture = document.getElementById(
+        'noiseTexture'
+    ) as HTMLInputElement;
+    return noiseTexture.value;
+}
+
+function getNoiseAmountHex() {
+    const noiseAmount = document.getElementById(
+        'noiseAmount'
+    ) as HTMLInputElement;
+    const asnumber = parseInt(noiseAmount.value);
+    return asnumber.toString(16).padStart(2, '0');
 }

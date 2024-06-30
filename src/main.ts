@@ -32,4 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         copyResult();
     });
+
+    document.getElementById('btn-discard')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const result = document.getElementById('result-text') as HTMLElement;
+        //add modal notification
+        result.textContent = '';
+    });
 });

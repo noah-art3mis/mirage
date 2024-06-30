@@ -57,19 +57,7 @@
                 </div>
             </div>
             <div class="other-params">
-                <div class="inline-item-form">
-                    <label for="colorFormat">Interpolation color space:</label>
-                    <select id="colorFormat" name="colorFormat">
-                        <option value="">RGB</option>
-                        <option value="in lch">LCH</option>
-                        <option value="in hsl shorter hue">
-                            HSL (shorter hue)
-                        </option>
-                        <option value="in hsl longer hue">
-                            HSL (longer hue)
-                        </option>
-                    </select>
-                </div>
+                <p>Basic:</p>
                 <div class="inline-item-form">
                     <label for="gradientSize">Gradient Size (1 ~ 4)</label>
                     <input
@@ -95,6 +83,11 @@
                     />
                 </div>
                 <div class="inline-item-form">
+                    <label for="shufflePlates">Shuffle</label>
+                    <input type="checkbox" id="shufflePlates" />
+                </div>
+                <p>Advanced:</p>
+                <div class="inline-item-form">
                     <label for="gradientRotation"
                         >Gradient Rotation (0 ~ 360)</label
                     >
@@ -108,8 +101,39 @@
                     />
                 </div>
                 <div class="inline-item-form">
-                    <label for="shufflePlates">Shuffle</label>
-                    <input type="checkbox" id="shufflePlates" />
+                    <label for="colorFormat">Interpolation Color Space:</label>
+                    <select id="colorFormat" name="colorFormat">
+                        <option value="">RGB</option>
+                        <option value="in lch">LCH</option>
+                        <option value="in hsl shorter hue">
+                            HSL (shorter hue)
+                        </option>
+                        <option value="in hsl longer hue">
+                            HSL (longer hue)
+                        </option>
+                    </select>
+                </div>
+                <div class="inline-item-form">
+                    <label for="noiseTexture">Noise Texture:</label>
+                    <select id="noiseTexture" name="noiseTexture">
+                        <option value="bayer">bayer</option>
+                        <option value="blue">blue</option>
+                        <option value="blurred">blurred</option>
+                        <option value="fft">fft</option>
+                        <option value="n2">n2</option>
+                        <option value="white">white</option>
+                    </select>
+                </div>
+                <div class="inline-item-form">
+                    <label for="noiseAmount">Noise Amount (25 ~ 0)</label>
+                    <input
+                        type="range"
+                        id="noiseAmount"
+                        min="230"
+                        max="255"
+                        step="5"
+                        value="255"
+                    />
                 </div>
                 <div class="inline-item-form buttons">
                     <button id="random" type="button">Random</button>
@@ -118,7 +142,10 @@
             </div>
             <div class="result-container">
                 <div id="result-text"></div>
-                <button id="copy-button" type="button">Copy</button>
+                <div class="buttons">
+                    <button id="btn-discard" type="button">Discard</button>
+                    <button id="copy-button" type="button">Copy</button>
+                </div>
                 <p id="result-message">
                     Remaining palettes copied to clipboard!
                 </p>
