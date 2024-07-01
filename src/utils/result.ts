@@ -1,6 +1,3 @@
-import { Color } from './color';
-import { getColorFormat, getGradientRotation } from './dashboard';
-
 export function copyResult() {
     const resultElement = document.getElementById('result-text') as HTMLElement;
 
