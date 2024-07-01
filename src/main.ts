@@ -1,23 +1,20 @@
-import { updateResult, copyResult } from './utils/result.ts';
+import { copyResult } from './utils/result.ts';
 import { resetPlates } from './utils/plates.ts';
 import { updateDocument } from './utils/dashboard.ts';
 import { randomizeParameters } from './utils/dashboard.ts';
 
 document.addEventListener('DOMContentLoaded', () => {
     updateDocument();
-    updateResult();
 
     document.querySelector('form')?.addEventListener('change', (e) => {
         e.preventDefault();
         resetPlates();
         updateDocument();
-        updateResult();
     });
 
     document.getElementById('default')?.addEventListener('click', () => {
         resetPlates();
         updateDocument();
-        updateResult();
     });
 
     document.getElementById('random')?.addEventListener('click', (e) => {
@@ -25,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resetPlates();
         randomizeParameters();
         updateDocument();
-        updateResult();
     });
 
     document.getElementById('copy-button')?.addEventListener('click', (e) => {
@@ -38,5 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = document.getElementById('result-text') as HTMLElement;
         //add modal notification
         result.textContent = '';
+
+        const selecteds = document.querySelectorAll(
+            '.selected'
+        ) as NodeListOf<HTMLDivElement>;
+        selecteds.forEach((plate) => {
+            plate.classList.remove('selected');
+        });
     });
 });

@@ -1,3 +1,5 @@
+import { Color } from './color.ts';
+
 export type Book = {
     author: string;
     title: string;
@@ -8,4 +10,13 @@ export type Book = {
 export type Page = {
     number: string;
     content: Array<string>;
+};
+
+export type PlateConfig = {
+    gradientSize: number;
+    contrast: number;
+    colorFormat: string;
+    rotation: number;
+    noiseTexture: string;
+    noiseAmount: number;
 };

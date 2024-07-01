@@ -7,10 +7,7 @@ export function shuffle<T>(array: T[]): T[] {
     return array;
 }
 
-export function getPermutations(
-    palette: string[],
-    permSize: number
-): string[][] {
+export function getPermutations(palette: string[], permSize: number): string[][] {
     // if (permSize > palette.length || permSize === 1) {
     //     throw new Error('Invalid combination size');
     // }

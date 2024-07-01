@@ -110,6 +110,10 @@ input[type='text'] {
 
 /* plates */
 
+.selected {
+    outline: 2px dashed var(--color-w);
+}
+
 .palette-plate-container {
     display: flex;
     align-items: center;
@@ -135,6 +139,7 @@ input[type='text'] {
     filter: blur(8px); */
 
     .plate-block {
+        pointer-events: none;
         font-size: inherit;
         padding: 10% 10% 7.5% 10%;
 

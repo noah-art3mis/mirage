@@ -47,18 +47,15 @@ AUTOMATON:
 
 ## TODO
 
--   feat: select liked instead of removing disliked
-    -   feat: discard button
--   feat: noise textures
--   when only 2 colors results say 'background-image' but should be background-color
--   chore: change branch name https://stackoverflow.com/questions/71951105/how-to-change-current-branch-in-git-from-master-to-main
+
+
 -   fix: palette placeholder doesnt break lines properly
 -   fix: messing with parameters makes plates disappear (rare)
 -   fix: need to press default twice for reset
--   fix: the format back
+-   chore: change branch name https://stackoverflow.com/questions/71951105/how-to-change-current-branch-in-git-from-master-to-main
 
 -   feat: other kinds of gradients
--   feat: add none/noise/grain/dither/blur
+-   feat: add other kinds of none/noise/grain/dither/blur
 
     -   blur /_ overflow: hidden; filter: blur(8px); _/ https://stackoverflow.com/a/46002546
     -   base 64 dither https://codepen.io/DavidJAldred/pen/pVbQBJ

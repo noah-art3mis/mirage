@@ -1,57 +1,53 @@
 import { generatePlates } from './plates.ts';
-import { filterColors } from './colors';
+import { filterColors } from './color.ts';
 import { getPermutations } from './utils.ts';
+import { Color } from './color.ts';
+import { PlateConfig } from './types.ts';
 
-export function updateDocument() {
-    const palette: string[] = getPalette();
+export function updateDocument(): void {
+    const paletteStrings: string[] = getPaletteStrings();
     const gradientSize: number = getGradientSize();
     const contrast: number = getContrastThreshold();
-    const colorFormat: string = getColorFormat();
-    const rotation: number = getGradientRotation();
-    const noiseTexture: string = getNoiseTexture();
-    const noiseAmountHex: string = getNoiseAmountHex();
 
-    
-    let colors = getPermutations(palette, gradientSize + 1);
-    colors = filterColors(colors, contrast);
+    const colorsString: string[][] = getPermutations(
+        paletteStrings,
+        gradientSize + 1
+    );
 
-    const plateConfig = {
-        colors: colors,
+    const colors = colorsString.map((palette) =>
+        palette.map((color) => Color.fromHex(color))
+    );
+
+    const colorsFiltered: Color[][] = filterColors(colors, contrast);
+
+    const plateConfig: PlateConfig = {
         gradientSize: gradientSize,
         contrast: contrast,
-        colorFormat: colorFormat,
-        rotation: rotation,
-        noiseTexture: noiseTexture,
-        noiseAmountHex: noiseAmountHex,
+        colorFormat: getColorFormat(),
+        rotation: getGradientRotation(),
+        noiseTexture: getNoiseTexture(),
+        noiseAmount: getNoiseAmount(),
     };
-    
-    generatePlates(plateConfig);
+
+    generatePlates(colorsFiltered, plateConfig);
 }
 
-export function isShufflePlates() {
+export function isShufflePlates(): boolean {
     const shufflePlates = document.getElementById(
         'shufflePlates'
     ) as HTMLInputElement;
     return shufflePlates.checked;
 }
 
-function getPalette() {
+function getPaletteStrings(): string[] {
     const palette = document.getElementById('palette') as HTMLInputElement;
     const parsedPalette = palette.value
         .split('\n')
         .map((color) => color.trim());
-
-    // Check if all colors are valid
-    for (let i = 0; i < parsedPalette.length; i++) {
-        if (!/^#[0-9A-Fa-f]{6}$/.test(parsedPalette[i])) {
-            alert('Invalid color: ' + parsedPalette[i]);
-        }
-    }
-
     return parsedPalette;
 }
 
-function getGradientSize() {
+function getGradientSize(): number {
     const gradientSize = document.getElementById(
         'gradientSize'
     ) as HTMLInputElement;
@@ -59,7 +55,7 @@ function getGradientSize() {
     return asnumber;
 }
 
-function getContrastThreshold() {
+function getContrastThreshold(): number {
     const contrastThreshold = document.getElementById(
         'contrastThreshold'
     ) as HTMLInputElement;
@@ -67,14 +63,14 @@ function getContrastThreshold() {
     return asnumber;
 }
 
-export function getColorFormat() {
+export function getColorFormat(): string {
     const colorFormat = document.getElementById(
         'colorFormat'
     ) as HTMLInputElement;
     return colorFormat.value;
 }
 
-export function getGradientRotation() {
+export function getGradientRotation(): number {
     const gradientRotation = document.getElementById(
         'gradientRotation'
     ) as HTMLInputElement;
@@ -82,7 +78,22 @@ export function getGradientRotation() {
     return asnumber;
 }
 
-export function randomizeParameters() {
+function getNoiseTexture(): string {
+    const noiseTexture = document.getElementById(
+        'noiseTexture'
+    ) as HTMLInputElement;
+    return noiseTexture.value;
+}
+
+function getNoiseAmount(): number {
+    const noiseAmount = document.getElementById(
+        'noiseAmount'
+    ) as HTMLInputElement;
+    const asnumber = parseInt(noiseAmount.value);
+    return asnumber;
+}
+
+export function randomizeParameters(): void {
     const gradientSize = document.getElementById(
         'gradientSize'
     ) as HTMLInputElement;
@@ -114,19 +125,27 @@ export function randomizeParameters() {
     ) as HTMLInputElement;
     const randomRotation = Math.floor(Math.random() * 360);
     rotation.value = randomRotation.toString();
-}
 
-function getNoiseTexture() {
     const noiseTexture = document.getElementById(
         'noiseTexture'
     ) as HTMLInputElement;
-    return noiseTexture.value;
-}
+    const rng = Math.floor(Math.random() * 5);
+    if (rng === 0) {
+        noiseTexture.value = 'bayer';
+    } else if (rng === 1) {
+        noiseTexture.value = 'blue';
+    } else if (rng === 2) {
+        noiseTexture.value = 'blurred';
+    } else if (rng === 3) {
+        noiseTexture.value = 'fft';
+    } else if (rng === 4) {
+        noiseTexture.value = 'n2';
+    } else if (rng === 5) {
+        noiseTexture.value = 'white';
+    }
 
-function getNoiseAmountHex() {
     const noiseAmount = document.getElementById(
         'noiseAmount'
     ) as HTMLInputElement;
-    const asnumber = parseInt(noiseAmount.value);
-    return asnumber.toString(16).padStart(2, '0');
+    noiseAmount.value = Math.floor(Math.random() * 25).toString();
 }
