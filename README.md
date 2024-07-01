@@ -2,33 +2,23 @@
 
 Helps you pick colors for simulacrum plates.
 
-Access at https://mirage-five.vercel.app/
+Available at https://mirage-five.vercel.app/
 
 Part of AUTOMATON, the simulacrum automation package.
-
-AUTOMATON:
-
--   [Apothecary](https://github.com/noah-art3mis/apothecary) (text extraction and cleanup)
--   [Mirage](https://github.com/noah-art3mis/mirage) (palette tool)
--   [Semblance](https://github.com/noah-art3mis/semblance) (image generation)
 
 ## How to
 
 1.  Configure parameters:
 
-    -   Basic
-        -   `Palette` : your palette. For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
-        -   `Gradient Size` : 1 for single color background, 2 for two color gradient, etc
-        -   `Contrast Threshold` : plates with low contrast are skipped
-            -   for higher gradient sizes, a lower threshold is recommended
-        -   `Shuffle` : shuffle order of plates
+    -   `Palette` : your palette. For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
+    -   `Gradient Size` : 1 for single color background, 2 for two color gradient, etc
+    -   `Contrast Threshold` : plates with low contrast are skipped
+        -   for higher gradient sizes, a lower threshold is recommended
+    -   `Shuffle` : shuffle order of plates
 
-1.  Click the plates you like and they will be added to the don't want and they will be removed from the list.
+1.  Click the plates you like and they will be added to the result text box.
 
-    -   Plates are re-generated every time you change the parameters.
-    -   ⚠️ If you have selected plates you like, you will lose them if you make changes to the parameters.
-
-1.  Click `Copy`. Paste the CSS into your [Semblance](https://github.com/noah-art3mis/semblance) stylesheet.
+1.  Click `Copy`. Paste the resulting CSS into [Facsimile](https://github.com/noah-art3mis/semblance).
 
 ## Examples
 
@@ -51,6 +41,7 @@ AUTOMATON:
 
 ## TODO
 
+-   fix: result persists after randomization (regex to check if plate is in the text)
 -   fix: move palette to basic
 -   fix: hide advanced
 -   fix: palette placeholder doesnt break lines properly
