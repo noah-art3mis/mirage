@@ -16,13 +16,14 @@ AUTOMATON:
 
 1.  Configure parameters:
 
-    -   `Palette` : your palette. For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
-    -   `Gradient Size` : 1 for single color background, 2 for two color gradient, etc
-    -   `Contrast Threshold` : plates with low contrast are skipped
-        -   for higher gradient sizes, a lower threshold is recommended
-    -   `Shuffle` : shuffle order of plates
+    -   Basic
+        -   `Palette` : your palette. For example, you can upload a book cover [here](https://color.adobe.com/create/image-gradient).
+        -   `Gradient Size` : 1 for single color background, 2 for two color gradient, etc
+        -   `Contrast Threshold` : plates with low contrast are skipped
+            -   for higher gradient sizes, a lower threshold is recommended
+        -   `Shuffle` : shuffle order of plates
 
-1.  Click the plates you don't want and they will be removed from the list.
+1.  Click the plates you like and they will be added to the don't want and they will be removed from the list.
 
     -   Plates are re-generated every time you change the parameters.
     -   ⚠️ If you have selected plates you like, you will lose them if you make changes to the parameters.
@@ -50,11 +51,13 @@ AUTOMATON:
 
 ## TODO
 
--   fix: contrast
+-   fix: move palette to basic
+-   fix: hide advanced
 -   fix: palette placeholder doesnt break lines properly
 -   fix: messing with parameters makes plates disappear (rare)
 -   fix: need to press default twice for reset
--   chore: change branch name https://stackoverflow.com/questions/71951105/how-to-change-current-branch-in-git-from-master-to-main
+
+## TODO (unlikely)
 
 -   feat: other kinds of gradients
 -   feat: add other kinds of none/noise/grain/dither/blur
@@ -63,3 +66,5 @@ AUTOMATON:
     -   base 64 dither https://codepen.io/DavidJAldred/pen/pVbQBJ
     -   base 64 https://stackoverflow.com/questions/4011113/can-you-add-noise-to-a-css-gradient
     -   gradient noise http://jollo.org/LNT/public/css-noise.html
+
+-   chore: change branch name https://stackoverflow.com/questions/71951105/how-to-change-current-branch-in-git-from-master-to-main

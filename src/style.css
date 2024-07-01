@@ -93,6 +93,7 @@ input[type='text'] {
 #result-text {
     background-color: var(--color-b);
     padding: 1rem;
+    margin: 0.5rem;
     font-family: 'Sono', 'Courier New', Courier, monospace;
     text-align: left;
     white-space: pre;
@@ -100,7 +101,9 @@ input[type='text'] {
     overflow-x: hidden;
     overflow-y: scroll;
     max-width: 30ch;
+    width: 100vw;
     max-height: 30ch;
+    height: 100vh;
 }
 
 .buttons {
