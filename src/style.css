@@ -12,11 +12,6 @@
     color: var(--color-a);
     background-color: var(--color-b);
 
-    --plate-background-gradient: linear-gradient(
-        0deg,
-        var(--color-d),
-        var(--color-d)
-    );
     --plate-background-color: red;
     --plate-text-color: blue;
     --scale: 1.5;
@@ -69,7 +64,10 @@ input[type='text'] {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    justify-content: flex-start;
+}
+
+.btn-default {
+    align-self: end;
 }
 
 .inline-item-form {
@@ -95,6 +93,7 @@ input[type='text'] {
 #result-text {
     background-color: var(--color-b);
     padding: 1rem;
+    margin: 0.5rem;
     font-family: 'Sono', 'Courier New', Courier, monospace;
     text-align: left;
     white-space: pre;
@@ -102,14 +101,21 @@ input[type='text'] {
     overflow-x: hidden;
     overflow-y: scroll;
     max-width: 30ch;
-    max-height: 10ch;
+    width: 100vw;
+    max-height: 30ch;
+    height: 100vh;
 }
 
 .buttons {
-    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* plates */
+
+.selected {
+    outline: 2px dashed var(--color-w);
+}
 
 .palette-plate-container {
     display: flex;
@@ -127,11 +133,16 @@ input[type='text'] {
     line-height: 1.4;
     font-family: 'Cardo', serif;
 
-    background-image: var(--plate-background-gradient);
-    background: var(--plate-background-color);
-    color: var(--plate-text-color);
+    background-color: white;
+    /* background-repeat: repeat, no-repeat;
+    background-size: cover, cover;
+    background-position: center, center; */
+
+    /* overflow: hidden;
+    filter: blur(8px); */
 
     .plate-block {
+        pointer-events: none;
         font-size: inherit;
         padding: 10% 10% 7.5% 10%;
 

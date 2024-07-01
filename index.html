@@ -48,13 +48,16 @@
                         rows="4"
                         cols="7"
                         resize="false"
-                        placeholder="#C4B9B3  #434343  #657189"
+                        placeholder="#C4B9B3 #434343 #657189"
                         pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})(\n ?#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))*$"
                         title="Enter HEX colors separated by commas"
-                    ></textarea>
+                    >
+#C4B9B3&#10;#434343&#10;#657189</textarea
+                    >
                 </div>
             </div>
             <div class="other-params">
+                <p>Basic:</p>
                 <div class="inline-item-form">
                     <label for="gradientSize">Gradient Size (1 ~ 4)</label>
                     <input
@@ -63,6 +66,7 @@
                         min="1"
                         max="4"
                         step="1"
+                        value="2"
                     />
                 </div>
                 <div class="inline-item-form">
@@ -75,22 +79,76 @@
                         min="0.0"
                         max="5.0"
                         step="0.25"
+                        value="2.5"
                     />
                 </div>
                 <div class="inline-item-form">
                     <label for="shufflePlates">Shuffle</label>
                     <input type="checkbox" id="shufflePlates" />
                 </div>
-                <!-- <div class="inline-item-form">
-                    <label for="sticky-dash">Sticky</label>
-                    <input type="checkbox" id="sticky-dash" />
-                </div> -->
+                <p>Advanced:</p>
+                <div class="inline-item-form">
+                    <label for="gradientRotation"
+                        >Gradient Rotation (0 ~ 360)</label
+                    >
+                    <input
+                        type="range"
+                        id="gradientRotation"
+                        min="0"
+                        max="360"
+                        step="15"
+                        value="0"
+                    />
+                </div>
+                <div class="inline-item-form">
+                    <label for="colorFormat">Interpolation Color Space:</label>
+                    <select id="colorFormat" name="colorFormat">
+                        <option value="">RGB</option>
+                        <option value="in lch">LCH</option>
+                        <option value="in hsl shorter hue">
+                            HSL (shorter hue)
+                        </option>
+                        <option value="in hsl longer hue">
+                            HSL (longer hue)
+                        </option>
+                    </select>
+                </div>
+                <div class="inline-item-form">
+                    <label for="noiseTexture">Noise Texture:</label>
+                    <select id="noiseTexture" name="noiseTexture">
+                        <option value="white">white</option>
+                        <option value="bayer">bayer</option>
+                        <option value="blue">blue</option>
+                        <option value="blurred">blurred</option>
+                        <option value="fft">fft</option>
+                        <option value="n2">n2</option>
+                    </select>
+                </div>
+                <div class="inline-item-form">
+                    <label for="noiseAmount">Noise Amount (25 ~ 0)</label>
+                    <input
+                        type="range"
+                        id="noiseAmount"
+                        min="230"
+                        max="255"
+                        step="2.5"
+                        value="255"
+                    />
+                </div>
+                <div class="inline-item-form buttons">
+                    <button id="random" type="button">Random</button>
+                    <button id="default" type="reset">Defaults</button>
+                </div>
             </div>
             <div class="result-container">
+                <p>Result:</p>
                 <div id="result-text"></div>
-                <button id="copy-button" type="button">Copy</button>
+                <div class="buttons">
+                    <button id="btn-discard" type="button">Discard</button>
+                    <button id="copy-button" type="button">Copy</button>
+                </div>
                 <p id="result-message">
-                    Remaining palettes copied to clipboard!
+                    Selected palettes copied to clipboard!
                 </p>
             </div>
         </form>
