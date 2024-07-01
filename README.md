@@ -47,8 +47,7 @@ AUTOMATON:
 
 ## TODO
 
-
-
+-   fix: contrast
 -   fix: palette placeholder doesnt break lines properly
 -   fix: messing with parameters makes plates disappear (rare)
 -   fix: need to press default twice for reset
