@@ -100,7 +100,7 @@ input[type='text'] {
     overflow-x: hidden;
     overflow-y: scroll;
     max-width: 30ch;
-    max-height: 10ch;
+    max-height: 30ch;
 }
 
 .buttons {

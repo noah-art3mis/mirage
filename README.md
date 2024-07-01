@@ -38,6 +38,9 @@ AUTOMATON:
     --c-1: rgb(196, 185, 179);
     --c-2: linear-gradient(0deg, rgb(67, 67, 67), rgb(67, 67, 67));
 
+    --plate-text-color: rgb(196, 185, 179)
+    --plate-bg-image: linear-gradient(285deg in hsl longer hue, rgb(101, 113, 137), rgb(67, 67, 67)), url("static/white.png")
+
 ### FG Palette
 
     '#CDC0BA', '#734C48', '#F2D0A7', '#9B95BF', '#37262C', '#836153'
